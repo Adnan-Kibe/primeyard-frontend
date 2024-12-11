@@ -1,12 +1,19 @@
 'use client'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Property } from '@/lib/constants';
 import { motion, useInView } from 'motion/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 
-const PropertyCard = () => {
+const PropertyCard = ({ property_id, name, address, description, price, bedrooms, bathrooms, square_feet, latitude, longitude, status, is_featured } : Property) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
+  const router = useRouter()
+
+  const onClick = () => {
+    router.push(`/dashboard/properties/${property_id}`)
+  }
 
   return (
     <motion.div
@@ -16,8 +23,7 @@ const PropertyCard = () => {
       transition={{ type: 'spring', stiffness: 100, damping: 15, duration: 0.5 }}
       className="max-w-lg mx-auto mt-6"
     >
-      <Link href={"/dashboard/properties/1"}>
-        <Card className="bg-white shadow-sm hover:shadow-md transition-all duration-300 rounded-lg">
+        <Card className="bg-white shadow-sm hover:shadow-md transition-all duration-300 rounded-lg" onClick={() => onClick()}>
           {/* Header Section */}
           <CardHeader className="p-4">
             <CardTitle className="text-lg font-semibold text-gray-800">
@@ -50,7 +56,6 @@ const PropertyCard = () => {
             </div>
           </CardContent>
         </Card>
-      </Link>
     </motion.div>
   );
 };
