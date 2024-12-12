@@ -7,7 +7,7 @@ export const signInSchema = z.object({
 
 export type TSsignInSchema = z.infer<typeof signInSchema>
 
-export type Image = {
+export type Images = {
     image_id: string;
     image: string;
 };
@@ -20,6 +20,8 @@ export type Inquire = {
     message: string;
 };
 
+export type Status = 'FOR_SALE' | 'FOR_RENT' | 'SOLD';
+
 export type Property = {
     property_id: string;
     name: string;
@@ -29,10 +31,10 @@ export type Property = {
     bedrooms: number;
     bathrooms: number;
     square_feet: number;
-    latitude: number;
-    longitude: number;
-    status: string;
+    latitude?: number;
+    longitude?: number;
+    status: Status;
     is_featured: boolean;
-    images: Image[];
+    images: Images[];
     inquiries: Inquire[];
 };

@@ -7,7 +7,6 @@ import React from 'react'
 
 const Page = () => {
   const BASEURL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL
-  console.log(BASEURL)
   const FetchProperties = async () => {
     const response = await axios(`${BASEURL}/properties`)
     return response.data

@@ -11,7 +11,10 @@ type SideBarIconProps = {
 
 const SideBarIcon = ({ open, icon, text, url }: SideBarIconProps) => {
   return (
-    <motion.div 
+    <motion.div
+    whileHover={{scale: 1.1}}
+    whileTap={{scale:0.9}}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
     className='flex'>
         <Link href={url} className='flex grid-flow-col space-x-2'>
             {icon}
