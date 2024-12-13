@@ -1,8 +1,10 @@
 'use client'
 import PropertyCard from '@/components/custom/PropertyCard'
+import { Button } from '@/components/ui/button'
 import { Property } from '@/lib/constants'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import Link from 'next/link'
 import React from 'react'
 
 const Page = () => {
@@ -17,6 +19,9 @@ const Page = () => {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-6 text-gray-800">Properties</h1>
+      <Button asChild>
+        <Link href={"properties/create"}>Add Property</Link>
+      </Button>
       
         {
           !properties ? 

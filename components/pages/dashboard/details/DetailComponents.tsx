@@ -27,7 +27,7 @@ const DetailComponents = ({ property_id, name, address, description, price, bedr
                         Authorization: `Bearer ${accessToken}`
                     }
                 })
-                router.push('/dashboard') // Redirect to dashboard after deletion
+                router.push('/dashboard/properties')
             } catch (error) {
                 console.error('Error deleting property:', error)
             }

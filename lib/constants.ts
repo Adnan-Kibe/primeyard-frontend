@@ -38,3 +38,25 @@ export type Property = {
     images: Images[];
     inquiries: Inquire[];
 };
+
+export const PropertySchema = z.object({
+    property_id: z.string(),
+    name: z.string(),
+    address: z.string(),
+    description: z.string(),
+    price: z.string(),
+    bedrooms: z.string(),
+    bathrooms: z.string(),
+    square_feet: z.string(),
+    latitude: z.string().optional(),
+    longitude: z.string().optional(),
+    status: z.enum(['FOR_SALE', 'FOR_RENT', 'SOLD']),
+    is_featured: z.boolean(),
+    images: z.array(
+        z.object({
+            image: z.string(),
+        })
+    )
+});
+
+export type TsPropertySchema = z.infer<typeof PropertySchema>;
